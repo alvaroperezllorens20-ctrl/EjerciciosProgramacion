@@ -5,7 +5,7 @@ public class Actividad {
     static void main() {
 
         Scanner teclado = new Scanner(System.in);//Definir para pedir cosas
-        System.out.println("¿Cómo te llamas?: "); //Escribir
+        System.out.println("¿Cómo te llamas?: "); //Escribir ln para que salte de linea
         String nombre = teclado.nextLine();// next si el nombre no tiene espacio, nextline si tiene espacio
         System.out.println("¿Cual es tu curso?: ");
         String curso = teclado.next();
