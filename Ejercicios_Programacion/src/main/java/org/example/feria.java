@@ -8,13 +8,15 @@ public class Feria {
         final int MIN2 = 140;
         final int MAX2 = 120;
         final int MAX = 230;
+        double peso = 0;
         System.out.println("BIENVENIDO AL RATÓN JUGUETÓN");
         int altura = 0;
         try {
             System.out.println("Leyendo altura (cm): ");//pido altura
             altura = teclado.nextInt();
         }catch (Exception err){
-            System.out.println("ERROR DE LECTURA. BAJA DE LA BÁSCULA Y VUELVE A SUBIR…");//si el valor introducido no es un numero da error
+            System.out.println("Error. Formato incorrecto");//si el valor introducido no es un numero da error
+            return;
         }
         if (altura<0 || altura>MAX){
             System.out.println("ERROR DE LECTURA. BAJA DE LA BÁSCULA Y VUELVE A SUBIR…");//si el numero es negativo o mayor que MAX(230) da error
@@ -22,8 +24,13 @@ public class Feria {
             int exc= MIN2 - altura; //calculo la altura que faltaria para subir a la atraccion
             System.out.println("LO SIENTO, NO PUEDES MONTAR EN LA ATRACCION. Te faltan "+exc+" cm");//muestro la altura que falta por pantalla
         }else{
-            System.out.println("Leyendo peso (kg):"); //pido el peso
-            double peso = teclado.nextDouble();
+            try {
+                System.out.println("Leyendo peso (kg):"); //pido el peso
+                peso = teclado.nextDouble();
+            }catch (Exception err){
+                System.out.println("Error. Formato incorrecto");//si el valor introducido no es un numero da error
+                return;
+            }
             double min = (altura * 2) / 8.0;//calculo el peso minimo
             if (peso<min){//si el peso es menor que el peso minimo(min2) da error
                 System.out.println("NO CUMPLES CON EL PESO MÍNIMO");
