@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Scanner;
 
-public class Prac4 {
+public class Multiplicaciones {
     static void main() {
 
         Scanner teclado = new Scanner(System.in);
