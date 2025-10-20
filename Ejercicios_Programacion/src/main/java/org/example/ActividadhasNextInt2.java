@@ -12,34 +12,28 @@ public class ActividadhasNextInt2 {
         System.out.println("2.- Edad");
         System.out.println("----------------");
 
-        int edad = 0;
-        int modo = 0;
+        int modo = teclado.nextInt();
+        LocalDateTime fecha = LocalDateTime.now();
         int anyo_nacimiento_int = 0;
         final int ANYO_MIN = 1900;
 
-        LocalDateTime fecha = LocalDateTime.now();
+
         int anyo_actual = fecha.getYear();
 
-
-
-        if (teclado.hasNextInt()){
-            modo = teclado.nextInt();
-
-        }else{
-            System.out.println("Introduce un valor válido...");
-            return;
-        }
-        if (modo==1){
-
-            try {
+        switch (modo){
+            case 1:
                 System.out.println("Introduce tu anyo de nacimiento...");
                 String anyo_nacimiento = teclado.next();
-                anyo_nacimiento_int = Integer.parseInt(anyo_nacimiento);
-            }catch (Exception err){
-                System.out.println("Formato incorrecto");
-                return;
-            }
-            } else if (modo==1) {
+                try {
+                    anyo_nacimiento_int = Integer.parseInt(anyo_nacimiento);
+                }catch (Exception err){
+                    System.out.println("Formato incorrecto");
+                    return;
+                }
+                break;
+            case 2:
+                int edad = 0;
+                System.out.println("Introduce tu edad: ");
                 if (teclado.hasNextInt()){
                     edad = teclado.nextInt();
                 }else{
@@ -49,9 +43,11 @@ public class ActividadhasNextInt2 {
                 if (edad>=0){
                     anyo_nacimiento_int = anyo_actual - edad;
                 }
-            }else {
-                System.out.println("El modo no existe");
-            }
+                break;
+            default:
+                System.out.println("Introduce un valor válido...");
+                break;
+        }
         if (anyo_nacimiento_int >= ANYO_MIN && anyo_nacimiento_int <= anyo_actual){
             if (anyo_nacimiento_int <= 1927){
                 System.out.println("Generación no baitizada");
