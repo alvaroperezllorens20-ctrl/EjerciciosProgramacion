@@ -13,15 +13,31 @@ public class calculadora {
         int resta = 0;
         int mult = 0;
         int div  = 0;
+        double raiz = 0;
         boolean repetir = false;
+        System.out.println("**** BIENVENIDO A LA CALCULADORA RÁPIDA ****");
+        System.out.println("------------------------------");
+        System.out.println("[+] -> sumar");
+        System.out.println("[-] -> restar");
+        System.out.println("[x] -> multiplicar");
+        System.out.println("[/] -> dividir");
+        System.out.println("[R] -> raíz cuadrada");
+        System.out.println("------------------------------");
         do {
             try {
                 System.out.println("Introduce operando: ");
                 operando = teclado.nextInt();
+                teclado.nextLine();
                 System.out.println("Elige una operación: ");
                 operacion = teclado.nextLine();
-                System.out.println("Introduce un operando");
+                System.out.println("Introduce el segundo operando");
                 operando2 = teclado.nextInt();
+                if (operacion.equals("+") || operacion.equals("-") || operacion.equals("x") || operacion.equals("X") || operacion.equals("/")){
+                    System.out.println("Introduce el segundo operando");
+                    operando2 = teclado.nextInt();
+               }else {
+                    repetir = false;
+                }
                 switch (operacion){
                     case "+":
                         suma = operando + operando2;
@@ -32,15 +48,22 @@ public class calculadora {
                         repetir = true;
                         break;
                     case "x":
+                    case "X":
                         mult = operando * operando2;
                         repetir = true;
                         break;
                     case "/":
+                        String operando2_string = Integer.toString(operando2);
+                        if (operando2_string.equals("0")){
+                            System.out.println("No introduzcas 0 en el operando 2");
+                            return;
+                        }
                         div = operando / operando2;
                         repetir = true;
                         break;
+                    case "r":
                     case "R":
-                        double raiz = Math.sqrt(operando);
+                        raiz = Math.sqrt(operando);
                         repetir = true;
                         break;
                     default:
@@ -54,23 +77,16 @@ public class calculadora {
                 teclado.nextLine();
             }
         }while (repetir==false);
-        System.out.println("**** BIENVENIDO A LA CALCULADORA RÁPIDA ****");
-        System.out.println("Introduce operando: ");
-        System.out.println(operando);
-        System.out.println("------------------------------");
-        System.out.println("[+] -> sumar");
-        System.out.println("[-] -> restar");
-        System.out.println("[x] -> multiplicar");
-        System.out.println("[/] -> dividir");
-        System.out.println("[R] -> raíz cuadrada");
-        System.out.println("------------------------------");
-        System.out.println("Elige una operacion: ");
-        System.out.println(operacion);
-        System.out.println("Introduce el segundo operando: ");
-        System.out.println(operando2);
         if (operacion.equals("+")){
             System.out.println("El resultado de "+operando+" + "+operando2+" es "+suma);
+        } else if (operacion.equals("-")) {
+            System.out.println("El resultado de "+operando+" - "+operando2+" es "+resta);
+        } else if (operacion.equals("x") || operacion.equals("X")) {
+            System.out.println("El resultado de "+operando+" x "+operando2+" es "+mult);
+        } else if (operacion.equals("/")) {
+            System.out.println("El resultado de "+operando+" / "+operando2+" es "+div);
+        }else{
+            System.out.println("El resultado de la raiz de "+operando+" es "+raiz);
         }
-
     }
 }
