@@ -9,11 +9,6 @@ public class calculadora {
         double operando = 0;
         String operacion = "";
         double operando2 = 0;
-        double suma = 0;
-        double resta = 0;
-        double mult = 0;
-        double div = 0;
-        double raiz = 0;
         final int NEG = 0;
         boolean repetir = false;
 
@@ -34,44 +29,48 @@ public class calculadora {
                 System.out.println("Elige una operación: ");
                 operacion = teclado.nextLine();
                 operacion = operacion.toUpperCase();
-                if (!operacion.equals("R")) {
-                        System.out.println("Introduce el segundo operando");
-                        operando2 = teclado.nextInt();
+                if (!operacion.equals("+") && !operacion.equals("-") && !operacion.equals("X")
+                        && !operacion.equals("/") && !operacion.equals("R")) {
+                    System.out.println("Formato incorrecto. Tienes que usar +, -, x, / o R");
+                    return;
+                } else if (!operacion.equals("R")) {
+                    System.out.println("Introduce el segundo operando");
+                    operando2 = teclado.nextInt();
                 }
+
 
                 switch (operacion) {
                     case "+":
-                        suma = operando + operando2;
+                        double suma = operando + operando2;
                         System.out.println("El resultado de " + operando + " + " + operando2 + " es " + suma);
                         break;
                     case "-":
-                        resta = operando - operando2;
+                        double resta = operando - operando2;
                         System.out.println("El resultado de " + operando + " - " + operando2 + " es " + resta);
                         break;
                     case "X":
-                        mult = operando * operando2;
+                        double mult = operando * operando2;
                         System.out.println("El resultado de " + operando + " x " + operando2 + " es " + mult);
                         break;
                     case "/":
 
                         if (operando2 == NEG) {
                             System.out.println("No introduzcas 0 en el segundo operando");
-                            repetir = false;
                             teclado.nextLine();
                             break;
                         }
+                        double div = operando / operando2;
                         System.out.println("El resultado de " + operando + " / " + operando2 + " es " + div);
-                        div = operando / operando2;
                         break;
                     case "R":
                         if (operando < NEG) {
                             System.out.println("No se permiten numeros negativos");
-                            teclado.nextLine();
+                            repetir = false;
                             break;
                         } else {
-                            raiz = Math.sqrt(operando);
+                            double raiz = Math.sqrt(operando);
                             System.out.println("El resultado de la raiz de "+operando+" es "+raiz);
-                            teclado.nextLine();
+                            repetir = false;
                             break;
                         }
                     default:
