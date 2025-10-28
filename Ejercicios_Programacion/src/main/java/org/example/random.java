@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class random {
     static void main() {
@@ -23,6 +24,29 @@ public class random {
 //            contra += caracteres.charAt(aleatorio.nextInt(caracteres.length()-1));
 //        }
 //        System.out.println(contra);
-        // EJER 3
+// EJER 3
+//        Scanner teclado = new Scanner(System.in);
+//        int num_ale = 0;
+//        System.out.println("Introduce el valor minimo: ");
+//        int num1 = teclado.nextInt();
+//        System.out.println("Introdue el valor máximo: ");
+//        int num2 = teclado.nextInt();
+//        System.out.println("Introduce cuantos numeros aleatorios quieres: ");
+//        int cont = teclado.nextInt();
+//
+//        for (int i = 0;i < cont;i++){
+//            if (num1 < num2){
+//                num_ale = aleatorio.nextInt(num2)+num1;
+//                System.out.println(num_ale);
+//
+//            } else if (num1 > num2) {
+//                num_ale = aleatorio.nextInt(num1)+num2;
+//                System.out.println(num_ale);
+//            }else{
+//                System.out.println("Los numeros introducidos son iguales.");
+//            }
+//        }
+// EJER 4
+
     }
 }
