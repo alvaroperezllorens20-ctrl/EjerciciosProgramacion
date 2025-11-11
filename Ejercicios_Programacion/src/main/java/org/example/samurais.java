@@ -16,7 +16,7 @@ public class samurais {
         int sab = 1;
         int eq1 = 0;
         int eq2 = 0;
-        final int MAX2 = 6;
+        int cont2 = 0;
         final int SALIR = 4;
         do {
             cont = 0; //reinicio el contador a 0
@@ -44,30 +44,36 @@ public class samurais {
                 }
             }
         }while(true);
-        int num = aleatorio.nextInt(6,7); //pido un numero aleatorio entre 0 y 6
+        int num = aleatorio.nextInt(0,7); //pido un numero aleatorio entre 0 y 6
         System.out.println("¡Empieza la batalla!");
         System.out.println("La batalla empieza con el samurai "+num); //muestro por la posicion desde la que va a empezar la batalla
-        //recorro los vectores y voy comparando la posicion de los vectores
-        for (int i = num;i < equipo1.length; i++) {
-            //los paso a int ya que con string no me dejaba compararlos
-            int pri = Integer.parseInt(equipo1[i]);
-            int seg = Integer.parseInt(equipo2[i]);
-            if (pri > seg) {
-                System.out.println("Samurai " + i + " Gana Equipo 1: " + pri + " vs " + seg);
-                eq1++;
-            } else if (pri < seg) {
-                System.out.println("Samurai " + i + " Gana Equipo 2: " + pri + " vs " + seg);
-                eq2++;
-            } else {
-                System.out.println("Samurai " + i + " Empate: " + pri + " vs " + seg);
-            }//si un equipo gana 4 veces se rompe el bucle y ganan
-            if (eq1 == SALIR || eq2 == SALIR){
-                break;
-            }//cuando i llegue a 6 se reiniciará a 0
-            if (i == MAX2){
+        //recorro el vector y comparo quien gana y lo muestro
+        for (int i = num - 1; cont2 < equipo1.length; i++) {
+            // reiniciar i si llega al final del array
+            if (i >= equipo1.length) {
                 i = 0;
             }
-        }//compara los totales de los equipos y sale el ganador, si no es empate
+            //paso los equipos a int para compararlos
+            int pri = Integer.parseInt(equipo1[i]);
+            int seg = Integer.parseInt(equipo2[i]);
+            //los comparo
+            if (pri > seg) {
+                System.out.println("Samurai " + (i + 1) + " Gana Equipo 1: " + pri + " vs " + seg);
+                eq1++;
+            } else if (pri < seg) {
+                System.out.println("Samurai " + (i + 1) + " Gana Equipo 2: " + pri + " vs " + seg);
+                eq2++;
+            } else {
+                System.out.println("Samurai " + (i + 1) + " Empate: " + pri + " vs " + seg);
+            }
+
+            // Si un equipo gana 4 veces, termina la batalla
+            if (eq1 == SALIR || eq2 == SALIR) {
+                break;
+            }
+            cont2++;
+        }
+//compara los totales de los equipos y sale el ganador, si no es empate
         if (eq1 > eq2){
             System.out.println("Equipo 1 GANA. Equipo 1 ha tenido "+eq1+" bajas");
         } else if (eq2 > eq1) {
